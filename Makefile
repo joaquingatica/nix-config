@@ -26,3 +26,6 @@ sops-awscli:
 
 public-pull:
 	git subtree pull --prefix public https://github.com/joaquingatica/nix-config.git main  --squash
+
+public-push:
+	git subtree push --prefix public https://github.com/joaquingatica/nix-config.git main
