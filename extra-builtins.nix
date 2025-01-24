@@ -9,7 +9,7 @@
         f=$(mktemp)
         trap "rm $f" EXIT
         set -x
-        sops -d "${builtins.toString ./.}/${file}" > $f
+        sops -d "${file}" > $f
         nix-instantiate --eval --expr "builtins.readFile $f"
       ''
     ];
@@ -23,7 +23,7 @@
         set -euo pipefail
         f="$(mktemp -p "$(getconf DARWIN_USER_TEMP_DIR)" ${tmpPrefix}.XXXXXXXXXX)"
         set -x
-        sops -d "${builtins.toString ./.}/${file}" > $f
+        sops -d "${file}" > $f
         echo $f
       ''
     ];
@@ -32,5 +32,5 @@
   decryptFilePath = tmpPrefix: file:
     builtins.toPath (decryptFile tmpPrefix file);
 in {
-  inherit decrypt decryptFilePath;
+  inherit decrypt decryptFile decryptFilePath;
 }
