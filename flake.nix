@@ -77,12 +77,7 @@
     checks = eachSystem (pkgs: {
       pre-commit-check = pre-commit-hooks.lib.${pkgs.system}.run {
         src = ./.;
-        hooks = {
-          # *.nix files
-          alejandra.enable = true;
-          # *.{json,md,yaml} files
-          prettier.enable = true;
-        };
+        hooks = import ./pre-commit-hooks.nix;
       };
     });
 

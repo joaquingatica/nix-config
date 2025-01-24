@@ -9,7 +9,7 @@
         f=$(mktemp)
         trap "rm $f" EXIT
         set -x
-        sops -d "${file}" > $f
+        sops -d "${builtins.toString ./.}/${file}" > $f
         nix-instantiate --eval --expr "builtins.readFile $f"
       ''
     ];
@@ -23,7 +23,7 @@
         set -euo pipefail
         f="$(mktemp -p "$(getconf DARWIN_USER_TEMP_DIR)" ${tmpPrefix}.XXXXXXXXXX)"
         set -x
-        sops -d "${file}" > $f
+        sops -d "${builtins.toString ./.}/${file}" > $f
         echo $f
       ''
     ];
