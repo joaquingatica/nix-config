@@ -23,3 +23,6 @@ sops-secrets:
 
 sops-awscli:
 	sops home/joaquin/common/global/secrets/awscli.yaml
+
+public-pull:
+	git subtree pull --prefix public https://github.com/joaquingatica/nix-config.git main  --squash
