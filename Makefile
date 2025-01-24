@@ -3,19 +3,16 @@
 # https://gist.github.com/sighingnow/deee806603ec9274fd47
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
+EXTRA_BUILTINS_FILE := $$PWD/extra-builtins.nix
+
 install:
 ifeq ($(OS_NAME), darwin)
 	nix run nix-darwin -- switch --flake ./
 endif
 
-boot:
-ifeq ($(OS_NAME), darwin)
-	darwin-rebuild boot --option extra-builtins-file $$PWD/extra-builtins.nix --flake ./
-endif
-
 switch:
 ifeq ($(OS_NAME), darwin)
-	darwin-rebuild switch --option extra-builtins-file $$PWD/extra-builtins.nix --flake ./
+	darwin-rebuild switch --option extra-builtins-file $(EXTRA_BUILTINS_FILE) --flake ./
 endif
 
 fmt:
