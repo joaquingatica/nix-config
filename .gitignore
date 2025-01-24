@@ -11,3 +11,4 @@ keys/builder*
 ### Project ###
 .pre-commit-config.yaml
 .direnv
+keys
