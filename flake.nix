@@ -81,17 +81,35 @@
       };
     });
 
+    darwinModules = {
+      home-manager = import ./modules/home-manager.nix inputs;
+      nix-homebrew = import ./modules/nix-homebrew.nix inputs;
+      packages = import ./modules/packages.nix inputs;
+      "hosts/ang-joaquin-mbp14" = [
+        ./hosts/ang-joaquin-mbp14.nix
+      ];
+    };
+
+    homeModules = {
+      "joaquin/ang-joaquin-mbp14" = import ./home/joaquin/ang-joaquin-mbp14.nix;
+    };
+
     darwinConfigurations = {
       "ang-joaquin-mbp14" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
         modules =
-          [
-            ./hosts/ang-joaquin-mbp14.nix
-          ]
-          ++ (import ./modules/home-manager.nix inputs)
-          ++ (import ./modules/nix-homebrew.nix inputs)
-          ++ (import ./modules/packages.nix inputs);
+          self.darwinModules."hosts/ang-joaquin-mbp14"
+          ++ self.darwinModules.home-manager
+          ++ self.darwinModules.nix-homebrew
+          ++ self.darwinModules.packages
+          ++ [
+            {
+              home-manager.users.joaquin.imports = [
+                self.homeModules."joaquin/ang-joaquin-mbp14"
+              ];
+            }
+          ];
       };
     };
 
