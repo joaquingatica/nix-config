@@ -1,18 +1,27 @@
-.PHONY: install switch fmt run-builder sops-nix-env-vars sops-secrets sops-awscli
+.PHONY: install boot switch fmt darwin-run-builder sops-nix-env-vars sops-secrets sops-awscli
 
-# install nix-darwin
+# https://gist.github.com/sighingnow/deee806603ec9274fd47
+OS_NAME := $(shell uname -s | tr A-Z a-z)
+
 install:
-	nix run nix-darwin -- switch --flake .
+ifeq ($(OS_NAME), darwin)
+	nix run nix-darwin -- switch --flake ./
+endif
 
-# rebuild/apply changes to darwin configuration
+boot:
+ifeq ($(OS_NAME), darwin)
+	darwin-rebuild boot --option extra-builtins-file $$PWD/extra-builtins.nix --flake ./
+endif
+
 switch:
-	darwin-rebuild switch --option extra-builtins-file $$PWD/extra-builtins.nix --flake .
+ifeq ($(OS_NAME), darwin)
+	darwin-rebuild switch --option extra-builtins-file $$PWD/extra-builtins.nix --flake ./
+endif
 
 fmt:
 	pre-commit run --all-files
 
-# manually run linux builder
-run-builder:
+darwin-run-builder:
 	nix run nixpkgs#darwin.linux-builder
 
 sops-nix-env-vars:
@@ -23,9 +32,3 @@ sops-secrets:
 
 sops-awscli:
 	sops home/joaquin/common/global/secrets/awscli.yaml
-
-public-pull:
-	git subtree pull --prefix public https://github.com/joaquingatica/nix-config.git main  --squash
-
-public-push:
-	git subtree push --prefix public https://github.com/joaquingatica/nix-config.git main
