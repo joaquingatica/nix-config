@@ -5,6 +5,8 @@
     docker-compose
     gnupg
     grpcurl
+    kubectl
+    kubernetes-helm
     nodejs
     nodePackages.gulp-cli
     nodePackages.vercel
