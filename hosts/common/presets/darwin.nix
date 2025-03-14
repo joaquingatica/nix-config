@@ -18,7 +18,6 @@
     brews = [
       "difftastic"
       "grpcui"
-      "powerlevel10k"
     ];
     casks = [
       # add casks here

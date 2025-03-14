@@ -62,11 +62,6 @@
 
     # make sure `brew` and installed brews are available
     eval "$(brew shellenv)"
-
-    # powerlevel10k theme
-    source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-    # comment on new hosts before running `p10k configure`, uncomment after
-    source ~/.config/zsh/.p10k.zsh
   '';
 
   zshProfileExtra = ''
@@ -84,11 +79,27 @@ in {
       enableCompletion = true;
       historyControl = ["ignoredups" "ignorespace"];
     };
+    bat.enable = true;
     direnv = {
       enable = true;
       nix-direnv = {
         enable = true;
       };
+    };
+    eza = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
+    starship = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
     zsh = {
       enable = true;
@@ -117,6 +128,8 @@ in {
         theme = "clean";
       };
       shellAliases = {
+        # cat on steroids
+        cat = "bat";
         # open github repository for current directory
         ghrepo = "gh repo view -w";
         # open github PR for current branch in directory repository
