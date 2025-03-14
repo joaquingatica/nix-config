@@ -100,6 +100,9 @@ in {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      settings = {
+        custom.time.ignore_timeout = true;
+      };
     };
     zsh = {
       enable = true;
