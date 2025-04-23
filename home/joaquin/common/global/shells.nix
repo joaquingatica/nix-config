@@ -101,7 +101,7 @@ in {
       enableBashIntegration = true;
       enableZshIntegration = true;
       settings = {
-        custom.time.ignore_timeout = true;
+        command_timeout = 10000; # 10 seconds
       };
     };
     zsh = {
