@@ -5,8 +5,6 @@
     };
     git = {
       enable = true;
-      userName = "Joaquin Gatica";
-      userEmail = "joaquingatica@gmail.com";
 
       signing = {
         key = null; # let GnuPG decide what signing key to use depending on commit’s author
@@ -20,10 +18,6 @@
 
         diff = {
           external = "difft";
-        };
-
-        github = {
-          user = "joaquingatica";
         };
 
         init = {
