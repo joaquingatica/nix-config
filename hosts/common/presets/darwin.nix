@@ -20,7 +20,10 @@
       "grpcui"
     ];
     casks = [
-      # add casks here
+      "colima-ui"
+    ];
+    taps = [
+      "RyanCopley/homebrew-tap"
     ];
     onActivation = {
       autoUpdate = true;
