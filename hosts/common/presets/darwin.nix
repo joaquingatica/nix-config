@@ -44,14 +44,9 @@
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
-    activationScripts.postUserActivation.text = ''
-      # Following line should allow us to avoid a logout/login cycle
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
-
     # Set Git commit hash for darwin-version.
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
@@ -116,6 +111,8 @@
         AutomaticallyInstallMacOSUpdates = true;
       };
     };
+
+    primaryUser = "joaquin";
 
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog

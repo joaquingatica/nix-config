@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  zshInitExtra = ''
+  zshInitContent = ''
     # enable VI mode
     source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
@@ -141,7 +141,7 @@ in {
         kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
       };
       syntaxHighlighting.enable = true;
-      initExtra = zshInitExtra;
+      initContent = zshInitContent;
       profileExtra = zshProfileExtra;
     };
   };
