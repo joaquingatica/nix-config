@@ -5,7 +5,7 @@ OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 install:
 ifeq ($(OS_NAME), darwin)
-	nix run nix-darwin -- switch --flake ./
+	nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake ./
 endif
 
 switch:
