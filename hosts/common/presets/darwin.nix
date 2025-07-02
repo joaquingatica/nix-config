@@ -21,6 +21,7 @@
     ];
     casks = [
       "colima-ui"
+      "ghostty"
     ];
     taps = [
       "RyanCopley/homebrew-tap"

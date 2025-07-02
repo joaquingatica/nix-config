@@ -113,11 +113,13 @@ in {
         path = "${config.xdg.dataHome}/zsh/zsh_history";
         expireDuplicatesFirst = true;
         extended = true;
+        findNoDups = true;
+        ignoreAllDups = true;
         ignoreDups = true;
         ignoreSpace = true;
         share = true;
-        save = 100000;
-        size = 100000;
+        save = 1000000;
+        size = 1000000;
       };
       oh-my-zsh = {
         enable = true;
@@ -137,6 +139,8 @@ in {
         ghrepo = "gh repo view -w";
         # open github PR for current branch in directory repository
         ghpr = "gh pr view -w";
+        # search in history
+        hg = "history | grep";
         # https://gist.github.com/dersam/0ec781e8fe552521945671870344147b
         kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
       };
