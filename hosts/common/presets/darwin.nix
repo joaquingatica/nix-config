@@ -63,13 +63,13 @@
         autohide = true;
         largesize = 52;
         magnification = true;
-        persistent-apps = [
-          # add apps pinned to the dock
-          # "/Applications/Firefox.app"
-        ];
+        # persistent-apps = [
+        #   add apps pinned to the dock
+        #   "/Applications/Firefox.app"
+        # ];
         show-recents = false;
         tilesize = 50;
-        wvous-bl-corner = 2; # Mission Contro
+        wvous-bl-corner = 2; # Mission Control
         wvous-br-corner = 3; # Application Windows
         wvous-tl-corner = 1; # Disabled
         wvous-tr-corner = 12; # Notification Center
