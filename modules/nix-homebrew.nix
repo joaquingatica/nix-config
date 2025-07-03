@@ -1,6 +1,5 @@
 {
   nix-homebrew,
-  homebrew-bundle,
   homebrew-cask,
   homebrew-core,
   ...
@@ -14,7 +13,6 @@
       # with mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
       # mutableTaps = false;
       taps = {
-        "homebrew/homebrew-bundle" = homebrew-bundle;
         "homebrew/homebrew-core" = homebrew-core;
         "homebrew/homebrew-cask" = homebrew-cask;
       };

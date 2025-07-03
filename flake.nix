@@ -6,10 +6,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -43,7 +39,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    homebrew-bundle,
     homebrew-cask,
     homebrew-core,
     mac-app-util,

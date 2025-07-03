@@ -119,30 +119,14 @@
                 "type": "github"
             }
         },
-        "homebrew-bundle": {
-            "flake": false,
-            "locked": {
-                "lastModified": 1745335228,
-                "narHash": "sha256-TIKR2UgtyUmHLNZp255/vLs+1I10hXe+sciMEbAGFwE=",
-                "owner": "homebrew",
-                "repo": "homebrew-bundle",
-                "rev": "a3265c84b232e13048ecbf6fc18a2eedfadbeb08",
-                "type": "github"
-            },
-            "original": {
-                "owner": "homebrew",
-                "repo": "homebrew-bundle",
-                "type": "github"
-            }
-        },
         "homebrew-cask": {
             "flake": false,
             "locked": {
-                "lastModified": 1750956010,
-                "narHash": "sha256-cGMW8MheLMsX/zWALGQwizWDZ+oUt3kRTeOdwaPVeVI=",
+                "lastModified": 1751549120,
+                "narHash": "sha256-PXmHjVCax/selmWXvvnRGAeOPV87Qhny+QnVolLoSEI=",
                 "owner": "homebrew",
                 "repo": "homebrew-cask",
-                "rev": "fa574616792afce9087ab8f2b1ebd7807c8831d4",
+                "rev": "e38b1005783aeefc283d566a313a5129db6d0f4f",
                 "type": "github"
             },
             "original": {
@@ -154,11 +138,11 @@
         "homebrew-core": {
             "flake": false,
             "locked": {
-                "lastModified": 1750962774,
-                "narHash": "sha256-Kt1rXAxLsTMVUwKyCT6huFGY6A0DFrYpEZVWUsZeqg0=",
+                "lastModified": 1751544568,
+                "narHash": "sha256-v8fPds4VmIJLs3TraExrNUMjkOSDRPNj2R5/uO5eoOY=",
                 "owner": "homebrew",
                 "repo": "homebrew-core",
-                "rev": "450f5aa280d33a6b854a081515991c2e12b0c948",
+                "rev": "63b2d2e548644766ea1168d924eec13277d56cbd",
                 "type": "github"
             },
             "original": {
@@ -297,7 +281,6 @@
         "root": {
             "inputs": {
                 "home-manager": "home-manager",
-                "homebrew-bundle": "homebrew-bundle",
                 "homebrew-cask": "homebrew-cask",
                 "homebrew-core": "homebrew-core",
                 "mac-app-util": "mac-app-util",
