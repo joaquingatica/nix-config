@@ -68,9 +68,6 @@
     # prevent duplicate entries in $PATH
     # $path array is tied to $PATH
     typeset -U path PATH
-
-    # AWS SAM Telemetry
-    SAM_CLI_TELEMETRY=0
   '';
 in {
   programs = {

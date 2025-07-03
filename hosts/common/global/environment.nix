@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  environment.variables = {
-    EDITOR = "vim";
-  };
-
   # Decrypt at eval time - useful for NIX_NPM_TOKENS
   # ref: https://elvishjerricco.github.io/2018/06/24/secure-declarative-key-management.html
   # NOTE: quotes inside the a JSON string such as `NIX_NPM_TOKENS` must be escaped with triple backslashes `\\\`

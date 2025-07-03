@@ -20,6 +20,8 @@
       LANG = "en_US.UTF-8";
       LC_CTYPE = "en_US.UTF-8";
       NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/.npmrc";
+      # AWS SAM Telemetry
+      SAM_CLI_TELEMETRY = 0;
     };
 
     sessionPath = [
