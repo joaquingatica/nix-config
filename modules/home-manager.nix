@@ -17,7 +17,7 @@ inputs @ {
         sops-nix.homeManagerModules.sops
       ];
     };
-    # https://github.com/LnL7/nix-darwin/issues/682
+    # https://github.com/nix-darwin/nix-darwin/issues/682
     users.users.joaquin.home = "/Users/joaquin";
   }
 ]

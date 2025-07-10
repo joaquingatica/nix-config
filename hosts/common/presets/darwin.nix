@@ -51,7 +51,7 @@
     # Set Git commit hash for darwin-version.
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-    # see options: https://github.com/LnL7/nix-darwin/tree/bcc8afd06e237df060c85bad6af7128e05fd61a3/modules/system/defaults
+    # see options: https://github.com/nix-darwin/nix-darwin/tree/bcc8afd06e237df060c85bad6af7128e05fd61a3/modules/system/defaults
     defaults = {
       ".GlobalPreferences" = {
         "com.apple.mouse.scaling" = 3.0;
