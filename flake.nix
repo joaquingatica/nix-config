@@ -63,6 +63,7 @@
       home-manager = import ./modules/home-manager.nix inputs;
       nix-homebrew = import ./modules/nix-homebrew.nix inputs;
       packages = import ./modules/packages.nix inputs;
+      sops-nix = import ./modules/sops-nix.nix inputs;
       "hosts/ang-joaquin-mbp14" = [
         ./hosts/ang-joaquin-mbp14.nix
       ];
@@ -81,6 +82,7 @@
           ++ self.darwinModules.home-manager
           ++ self.darwinModules.nix-homebrew
           ++ self.darwinModules.packages
+          ++ self.darwinModules.sops-nix
           ++ [
             {
               home-manager.users.joaquin.imports = [

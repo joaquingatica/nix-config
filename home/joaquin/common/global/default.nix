@@ -8,7 +8,6 @@
     ./git.nix
     ./packages.nix
     ./shells.nix
-    ./sops.nix
   ];
 
   home = {

@@ -20,7 +20,7 @@ darwin-run-builder:
 	nix run nixpkgs#darwin.linux-builder
 
 sops-secrets:
-	sops home/joaquin/common/global/secrets/secrets.yaml
+	sops hosts/common/global/secrets/secrets.yaml
 
 sops-awscli:
-	sops home/joaquin/common/global/secrets/awscli.yaml
+	sops hosts/common/global/secrets/awscli.yaml

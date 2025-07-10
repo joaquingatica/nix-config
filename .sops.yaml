@@ -1,12 +1,12 @@
 keys:
   - &admin_ang-joaquin-mbp14_joaquin age1ffnr57wyhkt39u2pd29cl3semevlhcy52el8wmvts3wqzn26f38qwedryc
 creation_rules:
-  - path_regex: hosts/.*/secrets/[^/]+\.(yaml|json|env|ini|txt)$
+  - path_regex: hosts/.*/secrets(/[^/]+)?\.(yaml|json|env|ini|txt)$
     key_groups:
       - age:
           - *admin_ang-joaquin-mbp14_joaquin
 
-  - path_regex: home/.*/secrets/[^/]+\.(yaml|json|env|ini|txt)$
+  - path_regex: home/.*/secrets(/[^/]+)?\.(yaml|json|env|ini|txt)$
     key_groups:
       - age:
           - *admin_ang-joaquin-mbp14_joaquin

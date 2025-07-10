@@ -1,7 +1,6 @@
 inputs @ {
   home-manager,
   mac-app-util,
-  sops-nix,
   ...
 }: [
   mac-app-util.darwinModules.default
@@ -14,7 +13,6 @@ inputs @ {
       extraSpecialArgs = {inherit inputs;};
       sharedModules = [
         mac-app-util.homeManagerModules.default
-        sops-nix.homeManagerModules.sops
       ];
     };
     # https://github.com/nix-darwin/nix-darwin/issues/682
