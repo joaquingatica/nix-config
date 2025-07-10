@@ -1,4 +1,4 @@
-.PHONY: install boot switch fmt darwin-run-builder sops-nix-env-vars sops-secrets sops-awscli
+.PHONY: install boot switch fmt darwin-run-builder sops-secrets sops-awscli
 
 # https://gist.github.com/sighingnow/deee806603ec9274fd47
 OS_NAME := $(shell uname -s | tr A-Z a-z)
@@ -18,9 +18,6 @@ fmt:
 
 darwin-run-builder:
 	nix run nixpkgs#darwin.linux-builder
-
-sops-nix-env-vars:
-	sops hosts/common/global/secrets/nix-env-vars.json
 
 sops-secrets:
 	sops home/joaquin/common/global/secrets/secrets.yaml
