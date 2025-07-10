@@ -10,7 +10,7 @@ endif
 
 switch:
 ifeq ($(OS_NAME), darwin)
-	darwin-rebuild switch --option extra-builtins-file $$PWD/extra-builtins.nix --flake ./
+	darwin-rebuild switch --flake ./
 endif
 
 fmt:

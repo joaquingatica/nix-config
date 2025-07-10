@@ -40,9 +40,6 @@ Keep in mind to **not** set a passphrase for the key in order to be used from `h
 
 1. Clone this repository in the folder: `~/.config`
 2. In the cloned folder, run `sudo make install`
-   - NOTE: If installation fails with `error: attribute 'extraBuiltins' missing`, comment all source
-     that uses `builtins.extraBuiltins`, and re-run `sudo make install`
-   - After successful install, uncomment the commented lines before the next steps.
 3. Run `direnv allow` to set up the project locally for development
 4. Run `sudo make switch` to apply the configuration after the initial setup
 

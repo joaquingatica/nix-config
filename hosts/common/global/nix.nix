@@ -3,7 +3,6 @@
     enable = true;
 
     extraOptions = ''
-      plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
       # keep-outputs = true
       # keep-derivations = true
     '';
