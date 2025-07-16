@@ -6,11 +6,28 @@
 }: {
   imports = [
     ./git.nix
-    ./packages.nix
     ./shells.nix
   ];
 
   home = {
+    packages = with pkgs; [
+      awscli2
+      corepack
+      docker
+      docker-compose
+      gnupg
+      grpcurl
+      kubectl
+      kubernetes-helm
+      nodejs
+      nodePackages.gulp-cli
+      nodePackages.vercel
+      pre-commit
+      python3
+      terraform
+      yq
+    ];
+
     sessionVariables = {
       AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
       AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
