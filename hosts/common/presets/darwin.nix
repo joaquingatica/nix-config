@@ -20,7 +20,6 @@
       "grpcui"
     ];
     casks = [
-      "colima-ui"
       "ghostty"
     ];
     taps = [
