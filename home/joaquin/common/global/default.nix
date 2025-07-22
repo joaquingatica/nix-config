@@ -60,6 +60,12 @@
     lazydocker = {
       enable = true;
     };
+    ssh = {
+      enable = true;
+      includes = [
+        "~/.colima/ssh_config"
+      ];
+    };
     vscode = {
       enable = true;
       profiles.default.extensions = with pkgs.vscode-extensions; [
