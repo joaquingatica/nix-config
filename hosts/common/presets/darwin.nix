@@ -21,6 +21,7 @@
     ];
     casks = [
       "ghostty"
+      "rectangle"
     ];
     taps = [
       "RyanCopley/homebrew-tap"
