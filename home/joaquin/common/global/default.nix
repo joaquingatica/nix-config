@@ -23,6 +23,7 @@
       nodePackages.gulp-cli
       nodePackages.vercel
       pre-commit
+      protobuf
       python3
       terraform
       yq
