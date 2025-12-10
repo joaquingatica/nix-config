@@ -11,7 +11,7 @@
         signByDefault = true;
       };
 
-      extraConfig = {
+      settings = {
         color = {
           ui = true;
         };
