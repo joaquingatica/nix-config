@@ -6,6 +6,10 @@ inputs @ {
   mac-app-util.darwinModules.default
   home-manager.darwinModules.home-manager
   {
+    users.users.joaquin = {
+      name = "joaquin";
+      home = "/Users/joaquin";
+    };
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
@@ -15,7 +19,5 @@ inputs @ {
         mac-app-util.homeManagerModules.default
       ];
     };
-    # https://github.com/nix-darwin/nix-darwin/issues/682
-    users.users.joaquin.home = "/Users/joaquin";
   }
 ]
