@@ -9,7 +9,7 @@
     nixpkgs.overlays = [
       (prev: final: {
         unstable = import nixpkgs-unstable {
-          inherit (prev) system;
+          system = prev.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         };
       })

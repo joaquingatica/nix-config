@@ -53,7 +53,7 @@
   in {
     # for `nix flake check`
     checks = eachSystem (pkgs: {
-      pre-commit-check = pre-commit-hooks.lib.${pkgs.system}.run {
+      pre-commit-check = pre-commit-hooks.lib.${pkgs.stdenv.hostPlatform.system}.run {
         src = ./.;
         hooks = import ./pre-commit-hooks.nix;
       };
@@ -94,9 +94,9 @@
     };
 
     devShell = eachSystem (pkgs:
-      nixpkgs.legacyPackages.${pkgs.system}.mkShell {
-        inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
+      nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mkShell {
+        inherit (self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check.enabledPackages;
       });
   };
 }
