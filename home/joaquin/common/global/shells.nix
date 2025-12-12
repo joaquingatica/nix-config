@@ -48,18 +48,6 @@
       fi
     }
 
-    aws_use_mfa_profile_anagram() {
-      aws_use_mfa_profile anagram arn:aws:iam::172936817571:mfa/joaquin
-    }
-
-    aws_use_mfa_profile_blockfarming() {
-      aws_use_mfa_profile blockfarming arn:aws:iam::666714533647:mfa/jgatica
-    }
-
-    aws_sso_dfh() {
-      aws sso login --sso-session dfhsso
-    }
-
     # make sure `brew` and installed brews are available
     eval "$(brew shellenv)"
   '';
