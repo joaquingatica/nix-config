@@ -93,10 +93,15 @@
       };
     };
 
-    devShell = eachSystem (pkgs:
-      nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mkShell {
+    devShells = eachSystem (pkgs: {
+      default = nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mkShell {
         inherit (self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check.enabledPackages;
-      });
+        buildInputs =
+          self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check.enabledPackages
+          ++ (with pkgs; [
+            # dev shells packages here
+          ]);
+      };
+    });
   };
 }
