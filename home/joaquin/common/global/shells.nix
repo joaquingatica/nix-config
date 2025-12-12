@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  shortcut = import ./shortcut.nix {inherit config pkgs;};
   zshInitContent = ''
     # enable VI mode
     source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
@@ -50,6 +51,9 @@
 
     # make sure `brew` and installed brews are available
     eval "$(brew shellenv)"
+
+    # alias for shortcut package, needed to make sure the parent shell changes directory
+    ${shortcut.zshInitContent}
   '';
 
   zshProfileExtra = ''
@@ -117,20 +121,22 @@ in {
         ];
         theme = "clean";
       };
-      shellAliases = {
-        # cat on steroids
-        cat = "bat";
-        # open github repository for current directory
-        ghrepo = "gh repo view -w";
-        # open github PR for current branch in directory repository
-        ghpr = "gh pr view -w";
-        # search in history
-        hg = "history | grep";
-        # https://gist.github.com/dersam/0ec781e8fe552521945671870344147b
-        kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
-        lzd = "lazydocker";
-        lg = "lazygit";
-      };
+      shellAliases =
+        {
+          # cat on steroids
+          cat = "bat";
+          # open github repository for current directory
+          ghrepo = "gh repo view -w";
+          # open github PR for current branch in directory repository
+          ghpr = "gh pr view -w";
+          # search in history
+          hg = "history | grep";
+          # https://gist.github.com/dersam/0ec781e8fe552521945671870344147b
+          kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
+          lzd = "lazydocker";
+          lg = "lazygit";
+        }
+        // shortcut.shellAliases;
       syntaxHighlighting.enable = true;
       initContent = zshInitContent;
       profileExtra = zshProfileExtra;

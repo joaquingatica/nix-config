@@ -39,6 +39,7 @@
       NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/.npmrc";
       # AWS SAM Telemetry
       SAM_CLI_TELEMETRY = 0;
+      SHORTCUT_CONFIG_FILE = (import ./shortcut.nix {inherit config pkgs;}).configFilePath;
     };
 
     sessionPath = [
