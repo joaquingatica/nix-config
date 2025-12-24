@@ -93,6 +93,7 @@ in {
         command_timeout = 10000; # 10 seconds
       };
     };
+    zoxide.enable = true;
     zsh = {
       enable = true;
       autosuggestion.enable = true;

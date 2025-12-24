@@ -12,7 +12,7 @@
     homeDirectory = "/Users/${config.home.username}";
 
     packages = with pkgs; [
-      # add packages here
+      zoxide
     ];
   };
 }
