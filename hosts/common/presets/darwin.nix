@@ -21,6 +21,7 @@
     ];
     casks = [
       "ghostty"
+      "raycast"
     ];
     taps = [
       "RyanCopley/homebrew-tap"
