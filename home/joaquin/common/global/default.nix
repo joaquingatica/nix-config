@@ -10,6 +10,10 @@
   ];
 
   home = {
+    file."${config.xdg.configHome}/ghostty/config" = {
+      source = ./ghostty-config.ini;
+    };
+
     packages = with pkgs; [
       awscli2
       corepack
