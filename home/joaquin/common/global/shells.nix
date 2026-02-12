@@ -69,6 +69,7 @@ in {
       historyControl = ["ignoredups" "ignorespace"];
     };
     bat.enable = true;
+    btop.enable = true;
     direnv = {
       enable = true;
       nix-direnv = {

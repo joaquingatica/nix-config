@@ -7,6 +7,7 @@ in {
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     unstable.claude-code
+    duckdb
     rustToolchain
     sops
     ssh-to-age
