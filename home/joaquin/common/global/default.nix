@@ -23,9 +23,10 @@
       grpcurl
       kubectl
       kubernetes-helm
-      nodejs
+      nodejs_22
       nodePackages.gulp-cli
       nodePackages.vercel
+      openjdk21
       pre-commit
       protobuf
       python3
