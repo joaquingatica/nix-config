@@ -16,6 +16,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "anomalyco/tap/opencode"
       "difftastic"
       "grpcui"
     ];
@@ -26,9 +27,7 @@
       "ghostty"
       "raycast"
     ];
-    taps = [
-      "RyanCopley/homebrew-tap"
-    ];
+    taps = [];
     onActivation = {
       autoUpdate = true;
       # remove packages not listed above
