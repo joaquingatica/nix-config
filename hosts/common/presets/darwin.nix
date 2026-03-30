@@ -11,6 +11,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     unstable.colima
+    pinentry_mac # to resolve error "gpg: signing failed: No pinentry" during git commit signing
   ];
 
   homebrew = {
