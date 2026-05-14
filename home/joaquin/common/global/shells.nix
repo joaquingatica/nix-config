@@ -5,9 +5,6 @@
 }: let
   shortcut = import ./shortcut.nix {inherit config pkgs;};
   zshInitContent = ''
-    # enable VI mode
-    source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
     # AWS CLI helper functions
     source ${pkgs.awscli2}/share/zsh/site-functions/_aws
 
@@ -123,6 +120,16 @@ in {
         ];
         theme = "clean";
       };
+      plugins = [
+        {
+          name = "zsh-vi-mode";
+          src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
+        }
+        {
+          name = "fzf-tab";
+          src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+        }
+      ];
       shellAliases =
         {
           # cat on steroids
