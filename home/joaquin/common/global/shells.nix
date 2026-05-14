@@ -8,44 +8,6 @@
     # AWS CLI helper functions
     source ${pkgs.awscli2}/share/zsh/site-functions/_aws
 
-    # AWS credentials
-
-    aws_use_mfa_profile() {
-      local AWS_CLI_PROFILE=$1
-      local ARN_OF_MFA=$2
-      local AWS_MFA_PROFILE="$\{AWS_CLI_PROFILE}_mfa"
-      local MFA_TOKEN_CODE=$3
-      local DURATION=129600
-
-      echo ""
-      echo "AWS-CLI Profile: $AWS_CLI_PROFILE"
-      echo "MFA ARN: $ARN_OF_MFA"
-      echo ""
-      read "MFA_TOKEN_CODE?Enter MFA Token Code: "
-      read AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN <<< $(
-        aws --profile $AWS_CLI_PROFILE sts get-session-token \
-          --duration $DURATION  \
-          --serial-number $ARN_OF_MFA \
-          --token-code $MFA_TOKEN_CODE \
-          --output text | awk '{ print $2, $4, $5 }'
-      )
-
-      echo ""
-      echo "- AWS_PROFILE: $AWS_MFA_PROFILE"
-      echo "- AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
-      echo "- AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
-      echo "- AWS_SESSION_TOKEN: $AWS_SESSION_TOKEN"
-
-      if [ -n "$AWS_ACCESS_KEY_ID" ]
-      then
-        `aws --profile $AWS_MFA_PROFILE configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"`
-        `aws --profile $AWS_MFA_PROFILE configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"`
-        `aws --profile $AWS_MFA_PROFILE configure set aws_session_token "$AWS_SESSION_TOKEN"`
-        export AWS_SESSION_TOKEN
-        export AWS_PROFILE=$AWS_MFA_PROFILE
-      fi
-    }
-
     # make sure `brew` and installed brews are available
     eval "$(brew shellenv)"
 
