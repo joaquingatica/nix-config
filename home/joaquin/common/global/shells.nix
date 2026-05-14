@@ -45,6 +45,12 @@ in {
       enableZshIntegration = true;
       enableBashIntegration = true;
     };
+    mcfly = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      fzf.enable = true;
+    };
     starship = {
       enable = true;
       enableBashIntegration = true;
