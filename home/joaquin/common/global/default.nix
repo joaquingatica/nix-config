@@ -10,8 +10,13 @@
   ];
 
   home = {
-    file."${config.xdg.configHome}/ghostty/config" = {
-      source = ./ghostty-config.ini;
+    file = {
+      "${config.xdg.configHome}/ghostty/config" = {
+        source = ./ghostty-config.ini;
+      };
+      "${config.xdg.configHome}/opencode/opencode.json" = {
+        source = ./opencode.json;
+      };
     };
 
     packages = with pkgs; [
