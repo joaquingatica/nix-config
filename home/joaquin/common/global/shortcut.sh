@@ -34,5 +34,11 @@ then
 # Use shortcut
 elif [ $1 ]
 then
-  echo "${shortcuts[$1]}"
+  if [ -n "${shortcuts[$1]}" ]
+  then
+    echo "${shortcuts[$1]}"
+  else
+    echo "Error: Shortcut '$1' not found" >&2
+    exit 1
+  fi
 fi
