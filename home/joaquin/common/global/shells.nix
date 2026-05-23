@@ -102,13 +102,13 @@ in {
         {
           # cat on steroids
           cat = "bat";
-          cl = "claude";
           # open github repository for current directory
           ghrepo = "gh repo view -w";
           # open github PR for current branch in directory repository
           ghpr = "gh pr view -w";
           # search in history
           hg = "history | grep";
+          idea = "idea1";
           # https://gist.github.com/dersam/0ec781e8fe552521945671870344147b
           kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
           lzd = "lazydocker";
