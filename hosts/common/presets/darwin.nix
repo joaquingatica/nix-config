@@ -54,7 +54,7 @@
     # Set Git commit hash for darwin-version.
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-    # see options: https://github.com/nix-darwin/nix-darwin/tree/bcc8afd06e237df060c85bad6af7128e05fd61a3/modules/system/defaults
+    # see options: https://github.com/nix-darwin/nix-darwin/tree/nix-darwin-25.11/modules/system/defaults
     defaults = {
       ".GlobalPreferences" = {
         "com.apple.mouse.scaling" = 3.0;
@@ -65,6 +65,7 @@
       };
       dock = {
         autohide = true;
+        expose-group-apps = true; # so app icons show
         largesize = 52;
         magnification = true;
         # persistent-apps = [
