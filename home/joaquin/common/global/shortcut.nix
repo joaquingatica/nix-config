@@ -6,11 +6,11 @@
   configFilePath = "${config.xdg.configHome}/.scrc";
   package = pkgs.writeShellScriptBin "shortcut" (builtins.readFile ./shortcut.sh);
   shellAliases = {
-    scf = "sc $(cut -d \" \" -f 1  ${configFilePath} | fzf)";
+    scf = "s $(cut -d \" \" -f 1  ${configFilePath} | fzf)";
   };
   zshInitContent = ''
     # alias for shortcut package, needed to make sure the parent shell changes directory
-    function sc() {
+    function s() {
       if [ $2 ]
       then
         if [ ! -f "$SHORTCUT_CONFIG_FILE" ]; then
@@ -26,7 +26,7 @@
       then
         cd "$(${package}/bin/shortcut $1)" || exit 1
       else
-        printf "Usage:\n\tSet shortcut: sc <name> <path>\n\tGo to shortcut: sc <name>\n\tList all existing shortcuts: sc --list\n"
+        printf "Usage:\n\tSet shortcut: s <name> <path>\n\tGo to shortcut: sc <name>\n\tList all existing shortcuts: sc --list\n"
       fi
     }
   '';

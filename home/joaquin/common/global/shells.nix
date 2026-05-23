@@ -102,6 +102,7 @@ in {
         {
           # cat on steroids
           cat = "bat";
+          cl = "claude";
           # open github repository for current directory
           ghrepo = "gh repo view -w";
           # open github PR for current branch in directory repository
@@ -112,6 +113,8 @@ in {
           kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
           lzd = "lazydocker";
           lg = "lazygit";
+          oc = "opencode";
+          sc = "suitecloud";
         }
         // shortcut.shellAliases;
       syntaxHighlighting.enable = true;
