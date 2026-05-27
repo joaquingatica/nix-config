@@ -20,7 +20,7 @@
     };
 
     packages = with pkgs; [
-      awscli2
+      unstable.awscli2
       corepack
       docker
       docker-compose
