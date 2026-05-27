@@ -11,9 +11,6 @@
 
   home = {
     file = {
-      "${config.home.homeDirectory}/.claude/settings.json" = {
-        source = ./claude.json;
-      };
       "${config.xdg.configHome}/ghostty/config" = {
         source = ./ghostty-config.ini;
       };
