@@ -1,0 +1,8 @@
+{
+  "theme": "light",
+  "preferredNotifChannel": "ghostty",
+  "alwaysThinkingEnabled": false,
+  "attribution": {
+    "commit": "   Co-Authored-By: Claude <noreply@anthropic.com>"
+  }
+}
