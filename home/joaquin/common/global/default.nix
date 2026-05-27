@@ -21,7 +21,7 @@
 
     packages = with pkgs; [
       awscli2
-      claude-code
+      unstable.claude-code
       corepack
       docker
       docker-compose
