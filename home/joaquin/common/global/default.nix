@@ -11,6 +11,9 @@
 
   home = {
     file = {
+      "${config.home.homeDirectory}/.claude/settings.json" = {
+        source = ./claude.json;
+      };
       "${config.xdg.configHome}/ghostty/config" = {
         source = ./ghostty-config.ini;
       };
@@ -21,7 +24,7 @@
 
     packages = with pkgs; [
       awscli2
-      unstable.claude-code
+      claude-code
       corepack
       docker
       docker-compose
