@@ -11,9 +11,6 @@
 
   home = {
     file = {
-      "${config.home.homeDirectory}/.claude/settings.json" = {
-        source = ./claude.json;
-      };
       "${config.xdg.configHome}/ghostty/config" = {
         source = ./ghostty-config.ini;
       };
@@ -24,7 +21,6 @@
 
     packages = with pkgs; [
       awscli2
-      claude-code
       corepack
       docker
       docker-compose
@@ -71,6 +67,15 @@
   };
 
   programs = {
+    claude-code = {
+      enable = true;
+      settings = {
+        alwaysThinkingEnabled = false;
+        attribution.commit = "   Co-Authored-By: Claude <noreply@anthropic.com>";
+        preferredNotifChannel = "ghostty";
+        theme = "light";
+      };
+    };
     home-manager = {
       enable = true;
     };
