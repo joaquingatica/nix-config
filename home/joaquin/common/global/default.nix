@@ -36,6 +36,7 @@
       nodePackages.gulp-cli
       nodePackages.vercel
       openjdk21
+      opentofu
       pre-commit
       protobuf
       python3
