@@ -20,7 +20,7 @@
     };
 
     packages = with pkgs; [
-      unstable.awscli2
+      awscli2
       docker
       docker-compose
       gnupg
@@ -33,7 +33,6 @@
       pre-commit
       protobuf
       python3
-      terraform
       yq
     ];
 
