@@ -5,12 +5,15 @@
   ...
 }: [
   {
-    nixpkgs.config.allowUnfree = true; # for terraform
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (nixpkgs.lib.getName pkg) [
+        "claude-code"
+        "vscode"
+      ];
     nixpkgs.overlays = [
       (prev: final: {
         unstable = import nixpkgs-unstable {
           system = prev.stdenv.hostPlatform.system;
-          config.allowUnfree = true;
         };
       })
       rust-overlay.overlays.default
