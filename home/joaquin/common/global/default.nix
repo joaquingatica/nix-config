@@ -3,7 +3,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  gulp-cli = pkgs.callPackage ./npm-packages/gulp-cli {};
+in {
   imports = [
     ./git.nix
     ./shells.nix
@@ -25,6 +27,7 @@
       docker-compose
       gnupg
       grpcurl
+      gulp-cli
       kubectl
       kubernetes-helm
       nodejs_22
