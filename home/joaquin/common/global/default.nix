@@ -21,7 +21,6 @@
 
     packages = with pkgs; [
       unstable.awscli2
-      corepack
       docker
       docker-compose
       gnupg
@@ -29,8 +28,6 @@
       kubectl
       kubernetes-helm
       nodejs_22
-      nodePackages.gulp-cli
-      nodePackages.vercel
       openjdk21
       opentofu
       pre-commit
