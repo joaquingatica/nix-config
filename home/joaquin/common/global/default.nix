@@ -36,6 +36,7 @@ in {
       pre-commit
       protobuf
       python3
+      terraform
       yq
     ];
 
