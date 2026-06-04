@@ -19,8 +19,11 @@ buildNpmPackage (finalAttrs: {
   nativeBuildInputs = [jq];
 
   postPatch = ''
+    # Upstream source does not include a package-lock.json, so it was regenerated
+    # via `npm install --package-lock-only` at this tag
     cp ${./package-lock.json} package-lock.json
-    # The published tarball ships a prebuilt gulp.1 manpage that is not in
+
+    # The published tarball includes a prebuilt `gulp.1` manpage that is not in
     # the git source. Drop the man entry so npm pack does not look for it.
     jq 'del(.man) | .files |= map(select(. != "gulp.1"))' package.json > package.json.tmp
     mv package.json.tmp package.json
