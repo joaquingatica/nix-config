@@ -1,3 +1,5 @@
+# NOTE: this will be no longer needed if the following PR
+# is merged and released: https://github.com/NixOS/nixpkgs/pull/528117
 {
   buildNpmPackage,
   fetchFromGitHub,
@@ -8,6 +10,8 @@ buildNpmPackage (finalAttrs: {
   pname = "gulp-cli";
   version = "3.1.0";
 
+  __structuredAttrs = true;
+
   src = fetchFromGitHub {
     owner = "gulpjs";
     repo = "gulp-cli";
@@ -16,7 +20,10 @@ buildNpmPackage (finalAttrs: {
   };
 
   nodejs = nodejs_22;
-  nativeBuildInputs = [jq];
+
+  nativeBuildInputs = [
+    jq
+  ];
 
   postPatch = ''
     # Upstream source does not include a package-lock.json, so it was regenerated
@@ -32,5 +39,6 @@ buildNpmPackage (finalAttrs: {
   npmDepsHash = "sha256-GQmVIkKYlsRXZLS4WLk47hmn87tmIu+AwShkzkK0Ih8=";
 
   dontNpmBuild = true;
+
   dontNpmPrune = true;
 })
