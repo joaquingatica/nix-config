@@ -11,6 +11,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     unstable.colima
+    raycast
     pinentry_mac # to resolve error "gpg: signing failed: No pinentry" during git commit signing
   ];
 
@@ -22,7 +23,6 @@
       # since there's no support for darwin builds yet.
       # See: https://github.com/ghostty-org/ghostty/discussions/2824
       "ghostty"
-      "raycast"
     ];
     taps = [];
     onActivation = {
