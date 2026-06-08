@@ -1,5 +1,12 @@
 {...}: {
   programs = {
+    difftastic = {
+      enable = true;
+      git = {
+        enable = true;
+        diffToolMode = true;
+      };
+    };
     gh = {
       enable = true;
     };
@@ -14,10 +21,6 @@
       settings = {
         color = {
           ui = true;
-        };
-
-        diff = {
-          external = "difft";
         };
 
         init = {

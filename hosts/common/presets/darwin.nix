@@ -17,7 +17,6 @@
   homebrew = {
     enable = true;
     brews = [
-      "difftastic"
       "grpcui"
     ];
     casks = [
