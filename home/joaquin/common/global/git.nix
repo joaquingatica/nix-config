@@ -12,29 +12,16 @@
     };
     git = {
       enable = true;
-
       signing = {
         key = null; # let GnuPG decide what signing key to use depending on commit’s author
         signByDefault = true;
       };
-
       settings = {
-        color = {
-          ui = true;
-        };
-
-        init = {
-          defaultBranch = "main";
-        };
-
-        merge = {
-          # Include common parent when merge conflicts arise
-          conflictStyle = "diff3";
-        };
-
-        pull = {
-          ff = "only";
-        };
+        color.ui = true;
+        init.defaultBranch = "main";
+        # Include common parent when merge conflicts arise
+        merge.conflictStyle = "diff3";
+        pull.ff = "only";
       };
     };
     lazygit = {
