@@ -15,11 +15,9 @@ buildNpmPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "gulpjs";
     repo = "gulp-cli";
-    rev = "v${finalAttrs.version}";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-eLorGF/aZwzi+c6sabmgkqvryNtznt3mJVc/Vmfa9aE=";
   };
-
-  nodejs = nodejs_22;
 
   nativeBuildInputs = [
     jq
