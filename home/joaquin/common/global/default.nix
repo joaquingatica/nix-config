@@ -72,6 +72,17 @@ in {
       settings = {
         alwaysThinkingEnabled = false;
         attribution.commit = "   Co-Authored-By: Claude <noreply@anthropic.com>";
+        enabledPlugins = {
+          "gitkraken-hooks@gitkraken" = true;
+        };
+        extraKnownMarketplaces = {
+          gitkraken = {
+            source = {
+              path = "${config.home.homeDirectory}/.claude/plugins/marketplaces/gitkraken";
+              source = "directory";
+            };
+          };
+        };
         preferredNotifChannel = "ghostty";
         theme = "light";
       };
