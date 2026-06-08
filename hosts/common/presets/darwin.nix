@@ -17,7 +17,6 @@
   homebrew = {
     enable = true;
     brews = [
-      "anomalyco/tap/opencode"
       "difftastic"
       "grpcui"
     ];

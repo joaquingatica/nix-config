@@ -16,9 +16,6 @@ in {
       "${config.xdg.configHome}/ghostty/config" = {
         source = ./ghostty-config.ini;
       };
-      "${config.xdg.configHome}/opencode/opencode.json" = {
-        source = ./opencode.json;
-      };
     };
 
     packages = with pkgs; [
@@ -92,6 +89,17 @@ in {
     };
     lazydocker = {
       enable = true;
+    };
+    opencode = {
+      enable = true;
+      settings = {
+        model = "deepinfra/moonshotai/Kimi-K2.5";
+        provider = {
+          deepinfra = {
+            name = "DeepInfra";
+          };
+        };
+      };
     };
     ssh = {
       enable = true;
