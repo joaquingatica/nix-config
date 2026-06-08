@@ -15,7 +15,8 @@
     # https://ghostty.org/docs/install/binary#nix-(macos-binary)
     ghostty-bin
     raycast
-    pinentry_mac # to resolve error "gpg: signing failed: No pinentry" during git commit signing
+    # to resolve error "gpg: signing failed: No pinentry" during git commit signing
+    pinentry_mac
   ];
 
   homebrew = {
