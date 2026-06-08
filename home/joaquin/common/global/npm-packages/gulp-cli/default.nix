@@ -4,7 +4,6 @@
   buildNpmPackage,
   fetchFromGitHub,
   jq,
-  nodejs_22,
 }:
 buildNpmPackage (finalAttrs: {
   pname = "gulp-cli";
