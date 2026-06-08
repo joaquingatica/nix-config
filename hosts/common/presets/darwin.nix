@@ -16,9 +16,7 @@
 
   homebrew = {
     enable = true;
-    brews = [
-      "grpcui"
-    ];
+    brews = [];
     casks = [
       # can't use `ghostty` from nixpkgs or home-manager (https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix)
       # since there's no support for darwin builds yet.

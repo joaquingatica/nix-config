@@ -23,7 +23,6 @@ in {
       docker
       docker-compose
       gnupg
-      grpcurl
       gulp-cli
       kubectl
       kubernetes-helm
