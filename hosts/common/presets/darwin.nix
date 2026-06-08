@@ -11,6 +11,9 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     colima
+    # use repackaged binary over linux-only package `ghostty`
+    # https://ghostty.org/docs/install/binary#nix-(macos-binary)
+    ghostty-bin
     raycast
     pinentry_mac # to resolve error "gpg: signing failed: No pinentry" during git commit signing
   ];
@@ -18,12 +21,7 @@
   homebrew = {
     enable = true;
     brews = [];
-    casks = [
-      # can't use `ghostty` from nixpkgs or home-manager (https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix)
-      # since there's no support for darwin builds yet.
-      # See: https://github.com/ghostty-org/ghostty/discussions/2824
-      "ghostty"
-    ];
+    casks = [];
     taps = [];
     onActivation = {
       autoUpdate = true;
