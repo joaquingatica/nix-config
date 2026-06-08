@@ -34,6 +34,7 @@ in {
       python3
       terraform
       yq
+      zoxide
     ];
 
     sessionVariables = {
