@@ -1,4 +1,4 @@
-# NOTE: this will be no longer needed if the following PR
+# NOTE: this will no longer be needed if the following PR
 # is merged and released: https://github.com/NixOS/nixpkgs/pull/528117
 {
   buildNpmPackage,
@@ -18,8 +18,8 @@
 
   # The published package includes a prebuilt `gulp.1` manpage that is not in
   # the git source. The man entry is removed so `npm pack` does not look for it.
-  patchedPackageJSON = runCommand "package.json" {nativeBuildInputs = [jq];} ''
-    jq 'del(.man) | .files |= map(select(. != "gulp.1"))' ${src}/package.json > $out
+  patchedPackageJSON = runCommand "package.json" {} ''
+    ${jq}/bin/jq 'del(.man) | .files |= map(select(. != "gulp.1"))' ${src}/package.json > $out
   '';
 in
   buildNpmPackage (finalAttrs: {
