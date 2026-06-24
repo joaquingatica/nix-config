@@ -21,7 +21,9 @@
 
   homebrew = {
     enable = true;
-    brews = [];
+    brews = [
+      "firefoxpwa"
+    ];
     casks = [];
     taps = [];
     onActivation = {
