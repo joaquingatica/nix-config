@@ -24,6 +24,7 @@ in {
       docker-compose
       gnupg
       gulp-cli
+      just
       kubectl
       kubernetes-helm
       nodejs_22
