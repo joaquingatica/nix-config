@@ -26,10 +26,11 @@
     casks = [];
     taps = [];
     onActivation = {
+      # to update, first update `homebrew-core` and `homebrew-cask` revisions in lockfile
       autoUpdate = true;
       # remove packages not listed above
       cleanup = "uninstall";
-      # NOTE: disable upgrade when a brew/cask upgrade is not desired on activation
+      # to upgrade, first update `homebrew-core` and `homebrew-cask` revisions in lockfile
       upgrade = true;
     };
   };
