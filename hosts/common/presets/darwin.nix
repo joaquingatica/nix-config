@@ -29,8 +29,8 @@
       autoUpdate = true;
       # remove packages not listed above
       cleanup = "uninstall";
-      # temporarily uncomment as needed, when `brew upgrade` is desired
-      # upgrade = true;
+      # NOTE: disable upgrade when a brew/cask upgrade is not desired on activation
+      upgrade = true;
     };
   };
 
