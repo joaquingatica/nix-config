@@ -8,7 +8,6 @@
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (nixpkgs.lib.getName pkg) [
         "claude-code"
-        "raycast"
         "terraform"
         "vscode"
       ];

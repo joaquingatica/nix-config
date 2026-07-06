@@ -14,7 +14,6 @@
     # use repackaged binary over linux-only package `ghostty`
     # https://ghostty.org/docs/install/binary#nix-(macos-binary)
     ghostty-bin
-    raycast
     # to resolve error "gpg: signing failed: No pinentry" during git commit signing
     pinentry_mac
   ];
