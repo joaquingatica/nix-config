@@ -30,6 +30,8 @@
       autoUpdate = true;
       # remove packages not listed above
       cleanup = "uninstall";
+      # temporarily uncomment as needed, when `brew upgrade` is desired
+      # upgrade = true;
     };
   };
 
