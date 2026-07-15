@@ -18,6 +18,10 @@
           };
         };
         preferredNotifChannel = "ghostty";
+        statusLine = {
+          type = "command";
+          command = "bash ${./statusline-command.sh}";
+        };
         theme = "light";
       };
     };
