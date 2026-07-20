@@ -1,69 +1,38 @@
-#!/usr/bin/env bash
-# Claude Code statusLine command mirroring Starship default prompt
+#!/bin/bash
+
+# https://code.claude.com/docs/en/statusline#display-multiple-lines
 
 input=$(cat)
 
-# --- Directory ---
-cwd=$(echo "$input" | jq -r '.cwd // .workspace.current_dir // empty')
-if [ -n "$cwd" ]; then
-  home="$HOME"
-  short_cwd="${cwd/#$home/~}"
-  # Show only last 3 path components (Starship default truncation_length = 3)
-  IFS='/' read -ra parts <<< "$short_cwd"
-  count=${#parts[@]}
-  if [ "$count" -gt 3 ]; then
-    short_cwd="…/${parts[$count-3]}/${parts[$count-2]}/${parts[$count-1]}"
-  fi
-fi
+MODEL=$(echo "$input" | jq -r '.model.display_name')
+DIR=$(echo "$input" | jq -r '.workspace.current_dir')
+COST=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
+PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+DURATION_MS=$(echo "$input" | jq -r '.cost.total_duration_ms // 0')
+FIVE_H=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+WEEK=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 
-# --- Git branch & status ---
-git_info=""
-if [ -n "$cwd" ] && git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
-  branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" describe --tags --exact-match 2>/dev/null || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
-  if [ -n "$branch" ]; then
-    # Git status indicators (mirrors Starship git_status defaults)
-    indicators=""
-    git_status=$(git -C "$cwd" status --porcelain 2>/dev/null)
-    staged=$(echo "$git_status" | grep -c "^[MADRC]" 2>/dev/null || echo 0)
-    unstaged=$(echo "$git_status" | grep -c "^.[MD]" 2>/dev/null || echo 0)
-    untracked=$(echo "$git_status" | grep -c "^??" 2>/dev/null || echo 0)
-    conflicted=$(echo "$git_status" | grep -c "^UU\|^AA\|^DD" 2>/dev/null || echo 0)
+CYAN='\033[36m'; GREEN='\033[32m'; YELLOW='\033[33m'; RED='\033[31m'; RESET='\033[0m'
 
-    [ "$conflicted" -gt 0 ] && indicators="${indicators}="
-    [ "$staged" -gt 0 ]     && indicators="${indicators}+"
-    [ "$unstaged" -gt 0 ]   && indicators="${indicators}!"
-    [ "$untracked" -gt 0 ]  && indicators="${indicators}?"
+# Pick bar color based on context usage
+if [ "$PCT" -ge 90 ]; then BAR_COLOR="$RED"
+elif [ "$PCT" -ge 70 ]; then BAR_COLOR="$YELLOW"
+else BAR_COLOR="$GREEN"; fi
 
-    if [ -n "$indicators" ]; then
-      git_info=" on  $branch [$indicators]"
-    else
-      git_info=" on  $branch"
-    fi
-  fi
-fi
+FILLED=$((PCT / 10)); EMPTY=$((10 - FILLED))
+printf -v FILL "%${FILLED}s"; printf -v PAD "%${EMPTY}s"
+BAR="${FILL// /█}${PAD// /░}"
 
-# --- Model ---
-model=$(echo "$input" | jq -r '.model.display_name // empty')
+MINS=$((DURATION_MS / 60000)); SECS=$(((DURATION_MS % 60000) / 1000))
 
-# --- Context remaining ---
-remaining=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
-ctx_info=""
-if [ -n "$remaining" ]; then
-  remaining_int=$(printf "%.0f" "$remaining")
-  ctx_info=" ctx:${remaining_int}%"
-fi
+BRANCH=""
+git rev-parse --git-dir > /dev/null 2>&1 && BRANCH=" | 🌿 $(git branch --show-current 2>/dev/null)"
 
-# --- Rate limits (Claude.ai) ---
-rate_info=""
-five=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
-if [ -n "$five" ]; then
-  rate_info=" 5h:$(printf '%.0f' "$five")%"
-fi
+LIMITS=""
+[ -n "$FIVE_H" ] && LIMITS="5h:$(printf '%.0f' "$FIVE_H")%"
+[ -n "$WEEK" ] && LIMITS="${LIMITS:+$LIMITS }7d:$(printf '%.0f' "$WEEK")%"
 
-# --- Assemble ---
-# Colors: cyan for dir, purple for git, dim for meta
-# Using ANSI escapes; status line renders in dim context
-printf "\033[36m%s\033[0m" "${short_cwd}"
-[ -n "$git_info" ] && printf "\033[35m%s\033[0m" "$git_info"
-[ -n "$model" ]    && printf "\033[2m via %s\033[0m" "$model"
-printf "\033[2m%s%s\033[0m" "$ctx_info" "$rate_info"
+echo -e "${CYAN}[$MODEL]${RESET} 📁 ${DIR##*/}$BRANCH"
+COST_FMT=$(printf '$%.2f' "$COST")
+echo -e "${BAR_COLOR}${BAR}${RESET} ${PCT}% | ${YELLOW}${COST_FMT}${RESET} | ⏱️ ${MINS}m ${SECS}s${LIMITS:+ | $LIMITS}"
+

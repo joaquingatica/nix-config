@@ -17,6 +17,7 @@
             };
           };
         };
+        model = "opus";
         preferredNotifChannel = "ghostty";
         statusLine = {
           type = "command";
