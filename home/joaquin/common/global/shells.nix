@@ -113,7 +113,6 @@ in {
           kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
           lzd = "lazydocker";
           lg = "lazygit";
-          oc = "opencode";
           scl = "suitecloud";
         }
         // shortcut.shellAliases;
