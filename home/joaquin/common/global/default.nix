@@ -7,7 +7,6 @@
   gulp-cli = pkgs.callPackage ./npm-packages/gulp-cli {};
 in {
   imports = [
-    ./agents.nix
     ./git.nix
     ./shells.nix
   ];
