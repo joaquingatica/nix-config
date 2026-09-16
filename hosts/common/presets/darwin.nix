@@ -24,10 +24,15 @@
       "firefoxpwa"
     ];
     casks = [];
-    taps = [];
+    # declared so `cleanup` doesn't untap what `nix-homebrew` manages read-only
+    taps = [
+      "homebrew/core"
+      "homebrew/cask"
+    ];
     onActivation = {
+      # `brew update` can't write to the read-only taps `nix-homebrew` manages;
       # to update, first update `homebrew-core` and `homebrew-cask` revisions in lockfile
-      autoUpdate = true;
+      autoUpdate = false;
       # remove packages not listed above
       cleanup = "uninstall";
       # to upgrade, first update `homebrew-core` and `homebrew-cask` revisions in lockfile
