@@ -4,8 +4,13 @@
 
 ### 0. Update configuration for new system
 
-1. Create appropriate folder in `./hosts` with the base configuration
-2. Update `darwinConfigurations` in `flake.nix` to use the new configuration
+1. Add the host's base configuration under `./hosts`, named after the machine's hostname —
+   either a flat `./hosts/<hostname>.nix` or a `./hosts/<hostname>/default.nix` folder if the
+   host needs several files.
+2. Add the matching Home Manager configuration at `./home/<username>/<hostname>.nix`, following
+   the same convention.
+3. Register both in `flake.nix`: add them to `darwinModules` and `homeModules`, then add a
+   `darwinConfigurations.<hostname>` entry that composes the modules.
 
 ### 1. Setup `nix`
 
@@ -93,8 +98,9 @@ repository.
 
 The directory structure of this project is optimized for sharing configuration as much as possible.
 
-The `./hosts` directory contains all systems that are managed by Nix Darwin. Each host has its own
-file/directory (with the same name as the machine's hostname).
+The `./hosts` directory contains all systems that are managed by Nix Darwin. Each host is named
+after the machine's hostname, and can be either a flat `<hostname>.nix` file or a `<hostname>/`
+directory with a `default.nix` when the host's configuration warrants splitting up.
 
 In addition, the `./hosts` directory contains a `./common` subdirectory. This directory contains
 configuration that can be shared across all hosts. Within the `./common` subdirectory, we can have
@@ -107,10 +113,12 @@ the following:
 #### Home Manager
 
 The `/home` directory contains per-user, per-host Home Manager configurations. The directory
-hierarchy corresponds to the user-specific Home Manager configurations for a particular host.
+hierarchy corresponds to the user-specific Home Manager configurations for a particular host,
+and follows the same flat-file-or-folder convention as `./hosts`:
 
 ```
-./home/<username>/<hostname>
+./home/<username>/<hostname>.nix
+./home/<username>/<hostname>/default.nix
 ```
 
 In addition, the `./home` directory contains a `./common` subdirectory. This directory
@@ -136,36 +144,45 @@ encrypted with the specified public keys.
 ### Updating Secrets
 
 To update secrets, run `sops <path>` to open the secrets file in unencrypted edit mode,
-and just save after updating. Helper `make` commands were added for ease of use. For example,
-`make sops-secrets`.
+and just save after updating. Helper `make` commands were added for ease of use:
+`make sops-secrets` edits `hosts/common/global/secrets/secrets.yaml`, and `make sops-awscli`
+edits `hosts/common/global/secrets/awscli.yaml`.
 
 If the file doesn't exist, it will be created. Make sure that a valid path regex exists in the
-`.sops.yaml` file for the new file.
+`.sops.yaml` file for the new file. The current rules only match files inside a `secrets/`
+directory under `hosts/` or `home/` — a file placed elsewhere is silently left unencrypted, so
+add the rule before writing any secret into it.
 
 ### Updating Secrets Configuration
 
 The project uses [`sops-nix`](https://github.com/Mic92/sops-nix) for automatically decrypting
-and injecting secrets into our NixOS configurations.
+and injecting secrets into our Nix configurations.
 
-To update secret files after making changes to the `.sops.yaml` file, run the snippet below:
+To re-encrypt every secret file after making changes to the `.sops.yaml` file, run the snippet
+below. It uses `find -E` for extended regular expressions, since the BSD `find` shipped with
+macOS defaults to basic ones and won't match the creation rules otherwise:
 
 ```bash
-find . -regex $(yq -r '[.creation_rules[] | "./" + .path_regex] | join("\\|")' "$(pwd)/.sops.yaml") | \
-xargs -I sops updatekeys -y {}
+find -E . -regex "$(yq -r '[.creation_rules[] | "./" + .path_regex] | join("|")' "$(pwd)/.sops.yaml")" | \
+xargs -I {} sops updatekeys -y {}
 ```
 
 ### Adding a Public Key
 
-The easiest way to add new machines is by using SSH host keys. Use `age` to encrypt secrets.
-To obtain an `age` public key, you can use the `ssh-to-age` tool to convert a host SSH Ed25519
-key to the age format.
+Secrets are encrypted to `age` recipients. Each entry under `keys` in `.sops.yaml` is the `age`
+public key derived from the Ed25519 SSH key of a user on a given machine — the same key pair set
+up in [Setup encryption keys](#22-setup-encryption-keys), not an SSH host key.
+
+To derive the `age` public key, convert the SSH public key with `ssh-to-age`:
 
 ```bash
 ssh-to-age -i ~/.ssh/id_ed25519.pub
 ```
 
-Then add the `age` public key to the `.sops.yaml` file, apply it to the desired key groups,
-and then re-encrypt the secret files (see [Updating Secrets Configuration](#updating-secrets-configuration)).
+Then add it to the `keys` list in `.sops.yaml`, reference it from the desired key groups, and
+re-encrypt the secret files (see [Updating Secrets Configuration](#updating-secrets-configuration)).
+The re-encryption has to be run from a machine that can already decrypt them, since `sops`
+decrypts each file before writing it back out to the new recipient list.
 
 ## Resources
 
