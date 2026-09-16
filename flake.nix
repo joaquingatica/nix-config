@@ -83,6 +83,10 @@
           ++ self.darwinModules.sops-nix
           ++ [
             {
+              users.users.joaquin = {
+                name = "joaquin";
+                home = "/Users/joaquin";
+              };
               home-manager.users.joaquin.imports = [
                 self.homeModules."joaquin/ang-joaquin-mbp14"
               ];
