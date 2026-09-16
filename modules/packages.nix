@@ -25,7 +25,7 @@
         builtins.elem (nixpkgs.lib.getName pkg) config.allowedUnfreePackages;
 
       nixpkgs.overlays = [
-        (prev: final: {
+        (final: prev: {
           unstable = import nixpkgs-unstable {
             system = prev.stdenv.hostPlatform.system;
           };
