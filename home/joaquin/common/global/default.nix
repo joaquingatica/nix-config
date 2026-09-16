@@ -58,7 +58,7 @@ in {
     ];
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = lib.mkDefault "25.05";
+    stateVersion = lib.mkDefault "25.11";
 
     username = lib.mkDefault "joaquin";
   };
