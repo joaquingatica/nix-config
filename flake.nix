@@ -14,12 +14,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-      # `sbcl` 2.6.4 can't map its heap on macOS 27; 2.6.6 fixes it and is only on unstable.
-      # Remove once 2.6.6 or newer lands in stable. https://github.com/hraban/mac-app-util/issues/45
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +40,6 @@
     home-manager,
     homebrew-cask,
     homebrew-core,
-    mac-app-util,
     nix-darwin,
     nix-homebrew,
     pre-commit-hooks,
