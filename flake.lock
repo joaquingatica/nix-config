@@ -57,11 +57,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1789571730,
-        "narHash": "sha256-Zx67sQt0+oSpPxmUzjrB/7DF3ck/L2oezBJY/zDvLxA=",
+        "lastModified": 1789654605,
+        "narHash": "sha256-mT6sTFF+Yr4q6dEPrczcaIj2jUcIbVckP/exbM+Bmj0=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "48a7896a6f547de6b6ca5bec2020014caacd6e17",
+        "rev": "13d3a827f69a3c5a3e3dc54e31ed4cab1572aa28",
         "type": "github"
       },
       "original": {
@@ -73,11 +73,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1789571891,
-        "narHash": "sha256-9iBK8j/L6v9KDIpVsrMC4+mRPvN/xW38eNfOPeOP1iY=",
+        "lastModified": 1789655763,
+        "narHash": "sha256-jpX0xZAokl3Sq5ygtZOabe3Vp3v5GILktE93jaCpgi4=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "b2019adf273fc0b01a1cf1656ffeeebd9818ea17",
+        "rev": "41d142f4dfb5e1209a7477efb4b7d1e36cb36254",
         "type": "github"
       },
       "original": {
@@ -140,11 +140,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1789426278,
-        "narHash": "sha256-LMzzTWExGdJ1S8U3IP5egkZEtyMswAwYowTAxIlkEZs=",
-        "rev": "efe6f071ede9d21c37462d2d6682d5e670099684",
+        "lastModified": 1789546076,
+        "narHash": "sha256-vWkSk5bbfTqdtMoSgD9FshACO8JCvXTFi+3cqEp0mH0=",
+        "rev": "b1b875982b17dabde9b4a37f3e229e74913e6db3",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1074086.efe6f071ede9/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1074753.b1b875982b17/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",
@@ -193,11 +193,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789543870,
-        "narHash": "sha256-45ikFmtfgBZgMePIm4GevJ9VjDSWO3PGQgOuuwHDpes=",
+        "lastModified": 1789630063,
+        "narHash": "sha256-hulcXtNnQVDTPXiC8dQpTX3FPHxklIfX7Cx2kd2GDrM=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "35ca0490d13a3d38c4602d0eb9600a30fa63a367",
+        "rev": "a1d497a9415999853809ba22a7959b1c36dc6554",
         "type": "github"
       },
       "original": {
