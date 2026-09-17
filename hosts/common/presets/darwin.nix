@@ -20,9 +20,7 @@
 
   homebrew = {
     enable = true;
-    brews = [
-      "firefoxpwa"
-    ];
+    brews = [];
     casks = [];
     # declared so `cleanup` doesn't untap what `nix-homebrew` manages read-only
     taps = [
