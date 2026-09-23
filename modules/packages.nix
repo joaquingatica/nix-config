@@ -28,6 +28,7 @@
         (final: prev: {
           unstable = import nixpkgs-unstable {
             system = prev.stdenv.hostPlatform.system;
+            inherit (config.nixpkgs) config;
           };
         })
         rust-overlay.overlays.default
