@@ -23,7 +23,9 @@
     brews = [
       "firefoxpwa"
     ];
-    casks = [];
+    casks = [
+      "ungoogled-chromium"
+    ];
     # declared so `cleanup` doesn't untap what `nix-homebrew` manages read-only
     taps = [
       "homebrew/core"
