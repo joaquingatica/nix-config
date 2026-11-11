@@ -78,6 +78,9 @@ in {
     };
     vscode = {
       enable = true;
+      # Stable nixpkgs can't patch the bundled ripgrep in VS Code 1.144; unstable can. Drop this
+      # once stable's `vscode` builds again.
+      package = pkgs.unstable.vscode;
       profiles.default.extensions = with pkgs.vscode-extensions; [
         # dracula-theme.theme-dracula
       ];
