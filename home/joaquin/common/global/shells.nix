@@ -109,6 +109,7 @@ in {
           # search in history
           hg = "history | grep";
           idea = "idea1";
+          ij = "idea .";
           # https://gist.github.com/dersam/0ec781e8fe552521945671870344147b
           kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
           lzd = "lazydocker";
