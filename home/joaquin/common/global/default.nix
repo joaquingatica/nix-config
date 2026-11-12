@@ -8,14 +8,16 @@
 in {
   imports = [
     ./git.nix
+    ./nix-config-path.nix
     ./shells.nix
   ];
 
   home = {
     file = {
-      "${config.xdg.configHome}/ghostty/config" = {
-        source = ./ghostty-config.ini;
-      };
+      # Linked out of the store so edits apply without a rebuild.
+      "${config.xdg.configHome}/ghostty/config".source =
+        config.lib.file.mkOutOfStoreSymlink
+        "${config.nixConfigPath}/home/joaquin/common/global/ghostty-config.ini";
     };
 
     packages = with pkgs; [
