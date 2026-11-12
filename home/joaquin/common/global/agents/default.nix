@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./shared
-    ./claude
+    ./claude-code
     ./codex
     ./opencode
   ];
