@@ -17,6 +17,7 @@
 
     config = {
       allowedUnfreePackages = [
+        "claude-code"
         "terraform"
         "vscode"
       ];
