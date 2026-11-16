@@ -90,6 +90,15 @@ Run `gpgconf --kill gpg-agent` to restart the GPG agent and apply the new config
 Follow the steps in [this guide](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
 to set up commit signing and signature verification in Git and GitHub.
 
+#### 4.4. Trust GitHub's web-flow key
+
+Home Manager imports the key GitHub signs web UI merges with, but leaves it untrusted. Sign it
+locally with one of your own keys so Git reports those merges as good signatures:
+
+```shell
+gpg -u <your-email> --quick-lsign-key 968479A1AFF927E37D1A566BB5690EEEBB952194
+```
+
 ## Usage
 
 - **Apply changes** from configuration: `sudo make switch`. The available system options are
