@@ -112,6 +112,7 @@ in {
           ij = "idea .";
           # https://gist.github.com/dersam/0ec781e8fe552521945671870344147b
           kraken = "open -na \"GitKraken\" --args -p \"$(git rev-parse --show-toplevel)\"";
+          kk = "kraken";
           lzd = "lazydocker";
           lg = "lazygit";
           scl = "suitecloud";
