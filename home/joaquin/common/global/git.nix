@@ -12,9 +12,11 @@
     };
     gpg = {
       enable = true;
-      # GitHub signs merges made in its web UI with this key; validate it by hand with a local
-      # signature, since `trust = "ultimate"` would also let it certify other keys
-      publicKeys = [{source = ./github-web-flow.gpg;}];
+      publicKeys = [
+        # GitHub signs merges made in its web UI with this key; validate it by hand with a local
+        # signature, since `trust = "ultimate"` would also let it certify other keys
+        {source = ./github-web-flow.gpg;}
+      ];
     };
     git = {
       enable = true;
