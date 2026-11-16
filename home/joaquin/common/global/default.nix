@@ -9,6 +9,7 @@ in {
   imports = [
     ./agents
     ./git.nix
+    ./herdr
     ./nix-config-path.nix
     ./shells.nix
   ];

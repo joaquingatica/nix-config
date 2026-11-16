@@ -1,0 +1,30 @@
+diff -ru a/src/app/actions.rs b/src/app/actions.rs
+--- a/src/app/actions.rs	2026-11-11 15:29:04.724816532 -0300
++++ b/src/app/actions.rs	2026-11-11 15:29:04.787183305 -0300
+@@ -147,20 +147,13 @@
+ }
+ 
+ pub fn notification_context(
+-    ws: &crate::workspace::Workspace,
+-    workspace_label: &str,
+-    ws_idx: usize,
+-    pane_id: PaneId,
++    _ws: &crate::workspace::Workspace,
++    _workspace_label: &str,
++    _ws_idx: usize,
++    _pane_id: PaneId,
+ ) -> String {
+-    let mut context = format!("{} · {}", workspace_label, ws_idx + 1);
+-    if ws.tabs.len() > 1 {
+-        if let Some(tab_idx) = ws.find_tab_index_for_pane(pane_id) {
+-            if let Some(label) = ws.tab_display_name(tab_idx) {
+-                context.push_str(&format!(" · {label}"));
+-            }
+-        }
+-    }
+-    context
++    crate::session::active_name()
++        .unwrap_or_else(|| crate::session::DEFAULT_SESSION_NAME.to_string())
+ }
+ 
+ #[derive(Debug, Clone, PartialEq, Eq)]

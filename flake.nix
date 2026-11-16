@@ -6,6 +6,11 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    herdr = {
+      url = "github:herdrdev/herdr/v0.9.5";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -37,6 +42,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    herdr,
     home-manager,
     homebrew-cask,
     homebrew-core,
