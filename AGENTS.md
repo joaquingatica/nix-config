@@ -31,7 +31,9 @@ Run `make fmt` before committing. It shells out to `pre-commit`, so it needs the
 and is gitignored.
 
 Never write plaintext into a secrets file, and never print a decrypted secret into the
-conversation. Edit secrets only through `sops` / the `make sops-*` targets.
+conversation. Edit secrets only through `sops` / the `make sops-*` targets. A new secrets file
+must match a `path_regex` in `.sops.yaml` before any secret goes into it, since a file the rules
+don't match is left unencrypted.
 
 ## Conventions
 

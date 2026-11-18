@@ -103,6 +103,9 @@ gpg -u <your-email> --quick-lsign-key 968479A1AFF927E37D1A566BB5690EEEBB952194
 
 - **Apply changes** from configuration: `sudo make switch`. The available system options are
   documented in the [`nix-darwin` manual](https://nix-darwin.github.io/nix-darwin/manual/).
+- **Collect garbage**: `sudo nix-collect-garbage`. Once macOS has launched an app from
+  `/nix/store`, App Management protection stops `nix-daemon` from deleting the bundle, so a plain
+  `nix-collect-garbage` fails with `Operation not permitted`.
 - **Format** the project's source code: `make fmt`.
 - **Edit secrets**: `make sops-*` commands provided in [`Makefile`](./Makefile).
 - **Build for Linux**: `make darwin-run-builder` runs a
