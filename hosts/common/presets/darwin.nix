@@ -25,6 +25,7 @@
     ];
     casks = [
       "ungoogled-chromium"
+      "zed"
     ];
     # declared so `cleanup` doesn't untap what `nix-homebrew` manages read-only
     taps = [

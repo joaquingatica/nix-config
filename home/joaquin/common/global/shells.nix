@@ -116,6 +116,7 @@ in {
           lzd = "lazydocker";
           lg = "lazygit";
           scl = "suitecloud";
+          zd = "zed .";
         }
         // shortcut.shellAliases;
       syntaxHighlighting.enable = true;
