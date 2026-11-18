@@ -20,9 +20,6 @@
 
   homebrew = {
     enable = true;
-    brews = [
-      "firefoxpwa"
-    ];
     casks = [
       "ungoogled-chromium"
       "zed"
