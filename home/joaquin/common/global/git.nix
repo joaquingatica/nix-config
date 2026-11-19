@@ -1,12 +1,12 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs = {
-    difftastic = {
-      enable = true;
-      git = {
-        enable = true;
-        diffToolMode = true;
-      };
-    };
+    # Not through `difftastic.git.enable`: it always sets `diff.external`, so even piped `git diff`
+    # output is difftastic's display, and patches saved by scripts and agents can't be applied.
+    difftastic.enable = true;
     gh = {
       enable = true;
     };
@@ -25,7 +25,13 @@
         signByDefault = true;
       };
       settings = {
+        alias.dft = "difftool";
         color.ui = true;
+        diff.tool = "difftastic";
+        difftool = {
+          prompt = false;
+          difftastic.cmd = "${lib.getExe config.programs.difftastic.package} $LOCAL $REMOTE";
+        };
         init.defaultBranch = "main";
         # Include common parent when merge conflicts arise
         merge.conflictStyle = "diff3";
