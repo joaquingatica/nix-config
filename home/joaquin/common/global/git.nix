@@ -20,6 +20,7 @@
     };
     git = {
       enable = true;
+      lfs.enable = true;
       signing = {
         key = null; # let GnuPG decide what signing key to use depending on commit’s author
         signByDefault = true;
