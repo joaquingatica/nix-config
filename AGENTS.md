@@ -30,6 +30,10 @@ Run `make fmt` before committing. It shells out to `pre-commit`, so it needs the
 (`direnv allow`, or `nix develop`); `.pre-commit-config.yaml` is a symlink into the Nix store
 and is gitignored.
 
+The dev shell sets `DEVELOPER_DIR` to the Nix Apple SDK, which has no `make`, so macOS's
+`/usr/bin/make` fails with `tool 'make' not found`. Run `make` targets as
+`env -u DEVELOPER_DIR make <target>`.
+
 Never write plaintext into a secrets file, and never print a decrypted secret into the
 conversation. Edit secrets only through `sops` / the `make sops-*` targets. A new secrets file
 must match a `path_regex` in `.sops.yaml` before any secret goes into it, since a file the rules
